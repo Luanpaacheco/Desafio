@@ -1,5 +1,7 @@
 import React from "react";
 import { CustomButton } from "../components/CustomButton";
+import { CustomInput } from "../components/CustomInput";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 const ComponentTestPage = () => {
   return (
@@ -19,6 +21,11 @@ const ComponentTestPage = () => {
         color="darkBlue"
         width="w-26"
         onClick={() => alert("login")}
+      />
+
+      <CustomInput
+        placeholder="work emai"
+        icon={<EmailOutlinedIcon fontSize="small" />}
       />
 
       {/* Adicione mais testes aqui */}

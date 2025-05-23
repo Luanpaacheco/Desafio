@@ -16,7 +16,7 @@ const colorClasses: Record<string, string> = {
 export const CustomButton: React.FC<CustomButtonProps> = ({
   text,
   color = "blue",
-  width = "'w-full sm:w-64 md:w-80 lg:w-96'",
+  width = "'w-full sm:w-80 md:w-90 lg:w-100'",
   onClick,
 }) => {
   return (
@@ -29,7 +29,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
         cursor-pointer
         text-white 
         font-medium 
-        py-2 px-4 
+        py-3 px-4 
         rounded-full 
         transition-colors duration-300
       `}
