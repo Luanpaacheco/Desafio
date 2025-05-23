@@ -3,22 +3,20 @@ import React from "react";
 
 interface CustomButtonProps {
   text: string;
-  color?: "blue" | "green" | "red" | "gray"; // você pode expandir
+  color?: "blue" | "darkBlue";
   width?: string;
   onClick?: () => void;
 }
 
 const colorClasses: Record<string, string> = {
-  blue: "bg-blue-600 hover:bg-blue-700",
-  green: "bg-green-600 hover:bg-green-700",
-  red: "bg-red-600 hover:bg-red-700",
-  gray: "bg-gray-600 hover:bg-gray-700",
+  blue: "bg-[#0575E6] hover:bg-[#0466C8]",
+  darkBlue: "bg-[#0D3B66] hover:bg-[#145d8a]",
 };
 
 export const CustomButton: React.FC<CustomButtonProps> = ({
   text,
   color = "blue",
-  width = "w-full sm:w-40",
+  width = "'w-full sm:w-64 md:w-80 lg:w-96'",
   onClick,
 }) => {
   return (
@@ -28,7 +26,12 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
       className={`
         ${width}
         ${colorClasses[color]}
-        text-white font-medium py-2 px-4 rounded transition-colors duration-300
+        cursor-pointer
+        text-white 
+        font-medium 
+        py-2 px-4 
+        rounded-full 
+        transition-colors duration-300
       `}
     >
       {text}

@@ -1,2 +1,6 @@
 @import "tailwindcss";
 
+body {
+  @apply bg-[#1B1C22] text-white;
+  box-sizing: border-box;
+}
