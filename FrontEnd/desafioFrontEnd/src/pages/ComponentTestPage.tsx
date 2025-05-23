@@ -1,6 +1,7 @@
 import React from "react";
 import { CustomButton } from "../components/CustomButton";
 import { CustomInput } from "../components/CustomInput";
+import { ImageDisplay } from "../components/ImageDisplay";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 const ComponentTestPage = () => {
@@ -27,6 +28,8 @@ const ComponentTestPage = () => {
         placeholder="work emai"
         icon={<EmailOutlinedIcon fontSize="small" />}
       />
+
+      <ImageDisplay />
 
       {/* Adicione mais testes aqui */}
     </div>
