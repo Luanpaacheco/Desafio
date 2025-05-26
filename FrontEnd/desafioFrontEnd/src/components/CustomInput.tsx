@@ -6,14 +6,16 @@ interface CustomInputProps {
   widthClass?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isPassword?: boolean;
 }
 
 export const CustomInput: React.FC<CustomInputProps> = ({
   placeholder = "Digite aqui...",
   icon,
-  widthClass = "'w-full sm:w-80 md:w-90 lg:w-100'",
+  widthClass = "'w-full sm:w-80 md:w-110 lg:w-150'",
   value,
   onChange,
+  isPassword = false,
 }) => {
   return (
     <div
@@ -21,7 +23,7 @@ export const CustomInput: React.FC<CustomInputProps> = ({
     >
       {icon && <div className="text-gray-500 mr-3">{icon}</div>}
       <input
-        type="text"
+        type={isPassword ? "password" : "text"}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

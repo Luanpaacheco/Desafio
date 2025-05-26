@@ -16,7 +16,7 @@ const colorClasses: Record<string, string> = {
 export const CustomButton: React.FC<CustomButtonProps> = ({
   text,
   color = "blue",
-  width = "'w-full sm:w-80 md:w-90 lg:w-100'",
+  width = "'w-full sm:w-80 md:w-110 lg:w-150'",
   onClick,
 }) => {
   return (

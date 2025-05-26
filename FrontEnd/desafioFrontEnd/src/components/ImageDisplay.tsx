@@ -16,7 +16,7 @@ export const ImageDisplay: React.FC<ImageDisplayProps> = ({
     <img
       src={src}
       alt={alt}
-      className={`w-full sm:w-80 md:w-96 lg:w-[25rem] h-auto object-contain ${className}`}
+      className={`w-40 sm:w-40 md:w-48 lg:w-[12rem] h-auto object-contain ${className}`}
     />
   );
 };
