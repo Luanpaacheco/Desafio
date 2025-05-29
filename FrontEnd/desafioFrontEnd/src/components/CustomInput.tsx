@@ -12,7 +12,7 @@ interface CustomInputProps {
 export const CustomInput: React.FC<CustomInputProps> = ({
   placeholder = "Digite aqui...",
   icon,
-  widthClass = "'w-full sm:w-80 md:w-110 lg:w-150'",
+  widthClass = "w-full sm:w-80 md:w-110 lg:w-150",
   value,
   onChange,
   isPassword = false,
