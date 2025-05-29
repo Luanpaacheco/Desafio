@@ -1,10 +1,24 @@
 import React from "react";
 import perfil from "../assets/perfilTaurusBranca.png";
+import ReactMarkdown from "react-markdown";
 
 interface MessegeChatProps {
   text: string;
   isUser?: boolean;
   avatarSrc?: string;
+}
+
+function renderMarkdown(text: string) {
+  let formatted = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  formatted = formatted.replace(/\*(.*?)\*/g, "<em>$1</em>");
+  formatted = formatted.replace(/\n/g, "<br/>");
+  formatted = formatted.replace(/^- (.*)/gm, "<li>$1</li>");
+  formatted = formatted.replace(
+    /(<li>.*<\/li>)/gms,
+    "<ul class='list-disc ml-4'>$1</ul>"
+  );
+
+  return <span dangerouslySetInnerHTML={{ __html: formatted }} />;
 }
 
 export const MessegeChat: React.FC<MessegeChatProps> = ({
@@ -23,13 +37,13 @@ export const MessegeChat: React.FC<MessegeChatProps> = ({
       )}
 
       <div
-        className={`max-w-[75%] px-4 py-2 rounded-xl text-white text-sm break-words ${
+        className={`max-w-[50%] px-4 py-2 rounded-xl text-white text-sm break-words ${
           isUser
             ? "bg-[#0575E6] rounded-br-none"
             : "bg-[#2F2F32] rounded-bl-none"
         }`}
       >
-        {text}
+        {renderMarkdown(text)}
       </div>
 
       {isUser && avatarSrc && (
