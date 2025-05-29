@@ -12,14 +12,33 @@ const Home = () => {
   const [inputPassword, setInputPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  function testando() {
-    if (inputEmail != "testando") {
-      setErrorMessage("Usuario ou senha invalido");
-    } else {
-      setErrorMessage("");
+  async function testando() {
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: inputEmail, password: inputPassword }),
+      });
+
+      if (!response.ok) {
+        // se status diferente de 2xx, pega a mensagem de erro
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || "Erro no login");
+        return;
+      }
+
+      const data = await response.json();
+      // supondo que o token vem em data.token
+      localStorage.setItem("token", data.token);
       navigate("/chat");
+    } catch (error) {
+      setErrorMessage("Erro de conexão");
+      console.log(error);
     }
-    alert(`${inputEmail} and ${inputPassword}`);
   }
 
   return (
@@ -48,7 +67,7 @@ const Home = () => {
         isPassword={true}
       />
       <CustomButton text="Login" color="blue" onClick={() => testando()} />
-      {errorMessage && ( // Mostra a mensagem de erro se houver
+      {errorMessage && (
         <p className="text-red-500 text-center">{errorMessage}</p>
       )}
       <p className="text-sm flex justify-start text-gray-50 ">
