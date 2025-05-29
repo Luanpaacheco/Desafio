@@ -1,24 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-interface GetUserProps {
-    text: string;
-    isUser: boolean;
-    userId:string;
+
+export class messagesService {
+    async execute(text: string, isUser: boolean, userId: string) {
+    const message = await prisma.message.create({
+      data: {
+        text,
+        isUser,
+        userId,
+      },
+    });
+
+    return message;
+
 }
-
-class messages {
-    async execute({ text, isUser, userId }: GetUserProps) {
-        
-        return await prisma.message.create({
-            data:{
-                text,isUser,userId
-            }
-        });
-
-
-
-    }
 }
-
-export { messages };

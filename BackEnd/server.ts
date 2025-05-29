@@ -16,6 +16,7 @@ app.use(express.json());
 app.use('/', routes);
 app.use('/login', routes)
 app.use('/chat', routes)
+app.use('/message', routes)
 
 // Iniciar o servidor
 app.listen(PORT, () => {
