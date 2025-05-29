@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ComponentTestPage from "./pages/ComponentTestPage";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
+import { PrivateRoute } from "./services/PrivateRoute";
 
 const App = () => {
   return (
@@ -13,7 +14,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<ComponentTestPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route
+          path="/chat"
+          element={
+            <PrivateRoute>
+              <Chat />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
