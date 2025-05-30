@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CustomButton } from "../components/CustomButton";
 import { CustomInput } from "../components/CustomInput";
@@ -20,13 +20,16 @@ const Home = () => {
     setErrorMessage("");
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: inputEmail, password: inputPassword }),
-      });
+      const response = await fetch(
+        "https://vercel-back-taurus.vercel.app/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: inputEmail, password: inputPassword }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

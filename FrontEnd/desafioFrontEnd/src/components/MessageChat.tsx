@@ -1,6 +1,5 @@
 import React from "react";
 import perfil from "../assets/perfilTaurusBranca.png";
-import ReactMarkdown from "react-markdown";
 
 interface MessegeChatProps {
   text: string;

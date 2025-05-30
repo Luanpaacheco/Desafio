@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MessegeChat } from "../components/MessageChat";
 import { InputChat } from "../components/InputChat";
 import HistoryIcon from "@mui/icons-material/History";
@@ -24,7 +24,7 @@ const Chat = () => {
 
   const saveMessage = async (text: string, isUser: boolean) => {
     try {
-      await fetch("http://localhost:5000/message", {
+      await fetch("https://vercel-back-taurus.vercel.app/message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,12 +83,10 @@ const Chat = () => {
 
   return (
     <div className="flex flex-col h-screen w-4xl justify-center ">
-      <div className="h-[8vh] flex items-center justify-end mb-5">
-        <div className="px-4 pt-3">
-          <LanguageSwitch />
-        </div>
+      <div className="w-full flex justify-between items-start px-4 pt-3 mb-5">
+        <LanguageSwitch />
         <button
-          className="flex gap-2 underline cursor-pointer align-middle justify-end w-full"
+          className="flex gap-2 underline cursor-pointer align-middle"
           onClick={() => navigate("/history")}
         >
           {strings[language].chatHistory}

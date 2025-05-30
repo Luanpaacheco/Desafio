@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MessegeChat } from "../components/MessageChat";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../LanguageContext";
+import { strings } from "../../strings";
 
 interface Message {
   id: string;
@@ -14,11 +16,12 @@ interface Message {
 const History = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const navigate = useNavigate();
+  const { language } = useLanguage();
 
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await fetch("http://localhost:5000/chat", {
+        const res = await fetch("https://vercel-back-taurus.vercel.app/chat", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -37,11 +40,11 @@ const History = () => {
     <div className="flex flex-col h-screen w-full px-4 py-2">
       <div className="h-[8vh] flex items-center">
         <button
-          className="flex gap-2 items-center text-sm underline cursor-pointer"
+          className="flex gap-2 items-center text-sm  cursor-pointer"
           onClick={() => navigate("/chat")}
         >
           <ArrowBackIcon />
-          Voltar
+          {strings[language].back}
         </button>
       </div>
 

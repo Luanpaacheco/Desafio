@@ -22,7 +22,7 @@ export const InputChat: React.FC<InputChatProps> = ({
 }) => {
   return (
     <div
-      className={`flex items-center border-2 rounded-2xl px-6 py-3  ${widthClass}`}
+      className={`flex items-center  rounded-2xl px-6 py-3 border-2 bg-[#2A2B31] border-[#3F4048] ${widthClass}`}
     >
       <input
         type={"text"}
@@ -34,7 +34,7 @@ export const InputChat: React.FC<InputChatProps> = ({
             onSend();
           }
         }}
-        className="flex-grow outline-none text-amber-50  py-1"
+        className="flex-grow outline-none text-amber-50  py-1 "
       />
       <button onClick={onSend} className="cursor-pointer" disabled={isDisable}>
         {isDisable ? <RestartAltIcon /> : <SendIcon fontSize="small" />}
