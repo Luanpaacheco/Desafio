@@ -4,9 +4,13 @@ import { CustomInput } from "../components/CustomInput";
 import { ImageDisplay } from "../components/ImageDisplay";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { MessegeChat } from "../components/MessageChat";
+import { useLanguage } from "../LanguageContext";
+import { strings } from "../../strings";
+import { LanguageSwitch } from "../components/LanguageSwitch";
 
 const ComponentTestPage = () => {
   const [inputValue, setInputValue] = useState("");
+  const { language } = useLanguage();
 
   function testando() {
     alert(inputValue);
@@ -17,6 +21,10 @@ const ComponentTestPage = () => {
       <h1 className="text-xl font-bold mb-4 text-white">
         Component Playground
       </h1>
+
+      <LanguageSwitch />
+
+      <h1 className="text-3xl font-bold mt-6">{strings[language].welcome}</h1>
 
       <CustomButton text="Login" color="blue" onClick={() => testando()} />
 

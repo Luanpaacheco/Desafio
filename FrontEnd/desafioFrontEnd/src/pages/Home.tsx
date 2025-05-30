@@ -4,10 +4,14 @@ import { CustomButton } from "../components/CustomButton";
 import { CustomInput } from "../components/CustomInput";
 import { ImageDisplay } from "../components/ImageDisplay";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import KeyOutlinedIcon from "@mui/icons-material/KeyOutlined";
+import LockOutlineIcon from "@mui/icons-material/LockOutline";
+import { useLanguage } from "../LanguageContext";
+import { strings } from "../../strings";
+import { LanguageSwitch } from "../components/LanguageSwitch";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { language } = useLanguage();
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -25,7 +29,6 @@ const Home = () => {
       });
 
       if (!response.ok) {
-        // se status diferente de 2xx, pega a mensagem de erro
         const errorData = await response.json();
         setErrorMessage(errorData.message || "Erro no login");
         return;
@@ -36,32 +39,35 @@ const Home = () => {
       localStorage.setItem("token", data.token);
       navigate("/chat");
     } catch (error) {
-      setErrorMessage("Erro de conexão");
+      setErrorMessage("Erro no login");
       console.log(error);
     }
   }
 
   return (
     <div className="flex flex-col gap-4 items-center justify-center">
+      <div className="w-full flex justify-start px-4 pt-3">
+        <LanguageSwitch />
+      </div>
       <ImageDisplay />
-      <div className=" sm:w-80 md:w-90 lg:w-100 pl-3 my-7">
+      <div className=" sm:w-80 md:w-90 lg:w-100 my-7">
         <p className="text-2xl font-bold flex justify-start">
-          Hello deployer!!!
+          {strings[language].welcome}
         </p>
         <p className="text-sm flex justify-start text-gray-300">
-          chatbot helps you w everything
+          {strings[language].chatbotDescription}
         </p>
       </div>
 
       <CustomInput
         icon={<EmailOutlinedIcon fontSize="small" />}
-        placeholder="work email"
+        placeholder={strings[language].workEmail}
         value={inputEmail}
         onChange={(e) => setInputEmail(e.target.value)}
       />
       <CustomInput
-        icon={<KeyOutlinedIcon fontSize="small" />}
-        placeholder="password"
+        icon={<LockOutlineIcon fontSize="small" />}
+        placeholder={strings[language].password}
         value={inputPassword}
         onChange={(e) => setInputPassword(e.target.value)}
         isPassword={true}
@@ -71,7 +77,7 @@ const Home = () => {
         <p className="text-red-500 text-center">{errorMessage}</p>
       )}
       <p className="text-sm flex justify-start text-gray-50 ">
-        If you have forgotten your password, please contact the IT team.
+        {strings[language].forgotPassword}
       </p>
     </div>
   );

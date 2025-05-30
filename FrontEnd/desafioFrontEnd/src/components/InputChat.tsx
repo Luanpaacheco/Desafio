@@ -1,5 +1,6 @@
 import React from "react";
 import SendIcon from "@mui/icons-material/Send";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 interface InputChatProps {
   placeholder?: string;
@@ -8,7 +9,7 @@ interface InputChatProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSend: () => void;
-  isPassword?: boolean;
+  isDisable?: boolean;
 }
 
 export const InputChat: React.FC<InputChatProps> = ({
@@ -17,21 +18,26 @@ export const InputChat: React.FC<InputChatProps> = ({
   value,
   onSend,
   onChange,
-  isPassword = false,
+  isDisable = false,
 }) => {
   return (
     <div
-      className={`flex items-center border rounded-full px-6 py-3  ${widthClass}`}
+      className={`flex items-center border-2 rounded-2xl px-6 py-3  ${widthClass}`}
     >
       <input
-        type={isPassword ? "password" : "text"}
+        type={"text"}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="flex-grow outline-none text-amber-400 leading-none py-1"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !isDisable) {
+            onSend();
+          }
+        }}
+        className="flex-grow outline-none text-amber-50  py-1"
       />
-      <button onClick={onSend} className="cursor-pointer">
-        <SendIcon fontSize="small" />
+      <button onClick={onSend} className="cursor-pointer" disabled={isDisable}>
+        {isDisable ? <RestartAltIcon /> : <SendIcon fontSize="small" />}
       </button>
     </div>
   );
