@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
-import { login } from '../services/login';
+import { login } from '../services/loginServices';
 
 class loginController {
     async handle(req: Request, res: Response) {
-        // Pega do body e não do params
         const { email, password } = req.body;
 
         const getByService = new login();

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { messagesService } from "../services/messages";
+import { messagesService } from "../services/CreateMessagesServices";
 
 
 class CreateMessage {

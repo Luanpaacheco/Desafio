@@ -1,8 +1,8 @@
 import { Router, Request, Response } from 'express';
-import {loginController} from "./src/controllers/login"
+import {loginController} from "./src/controllers/loginController"
 import authMiddleware from './src/middlewares/authMiddleware';
-import { getMessagesController } from './src/controllers/getMessages';
-import {CreateMessage} from "./src/controllers/messages"
+import { getMessagesController } from './src/controllers/getMessagesController';
+import {CreateMessage} from "./src/controllers/createMessagesController"
 const router = Router();
 
 
@@ -18,7 +18,6 @@ router.get('/chat', authMiddleware, (req: Request, res: Response) => {
 
 router.post('/message', authMiddleware, (req: Request, res: Response) => {
    new CreateMessage().handle(req, res);
-   console.log("foi")
 });
 
 export const routes = router;
