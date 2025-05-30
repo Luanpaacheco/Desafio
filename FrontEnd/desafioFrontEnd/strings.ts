@@ -2,7 +2,7 @@ export const strings = {
   pt: {
     welcome: 'Bem-vindo',
     chatHistory: 'Histórico de conversas',
-    disclaimer: 'O ChatGPT pode cometer erros. Considere verificar informações importantes.',
+    disclaimer: 'A IA pode cometer erros. Considere verificar informações importantes.',
     loginError: 'Erro no login',
     assistantGreeting: 'Olá, como posso te ajudar?',
     inputPlaceholder: 'Digite aqui...',
@@ -16,7 +16,7 @@ export const strings = {
   en: {
     welcome: 'Welcome',
     chatHistory: 'Chat history',
-    disclaimer: 'ChatGPT may make mistakes. Please verify important information.',
+    disclaimer: 'IA may make mistakes. Please verify important information.',
     loginError: 'Login error',
     assistantGreeting: 'Hi, how can I help you?',
     inputPlaceholder: 'Type here...',
