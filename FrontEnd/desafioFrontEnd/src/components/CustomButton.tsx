@@ -1,4 +1,3 @@
-//botao normal mas so muda a cor e oq esta escrito
 import React from "react";
 
 interface CustomButtonProps {

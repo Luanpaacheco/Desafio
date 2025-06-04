@@ -21,7 +21,7 @@ const History = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await fetch("https://vercel-back-taurus.vercel.app/chat", {
+        const res = await fetch("http://localhost:5000/chat", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

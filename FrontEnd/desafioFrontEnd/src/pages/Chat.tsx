@@ -24,7 +24,7 @@ const Chat = () => {
 
   const saveMessage = async (text: string, isUser: boolean) => {
     try {
-      await fetch("https://vercel-back-taurus.vercel.app/message", {
+      await fetch("http://localhost:5000/message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,6 +38,10 @@ const Chat = () => {
   };
 
   const handleSend = async () => {
+    if (!window.puter || !window.puter.ai) {
+      console.error("Puter SDK ainda não carregada.");
+      return;
+    }
     if (!inputValue.trim()) return;
     setIsLoading(true);
 
@@ -72,6 +76,7 @@ const Chat = () => {
       setIsLoading(false);
       await saveMessage(aiMessage.text, false);
     } catch (err) {
+      console.log(err);
       const errorMsg = {
         text: "Erro ao se comunicar com a IA.",
         isUser: false,
@@ -82,7 +87,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-4xl justify-center ">
+    <div className="flex flex-col h-[100dvh] w-4xl justify-center ">
       <div className="w-full flex justify-between items-start px-4 pt-3 mb-5">
         <LanguageSwitch />
         <button
@@ -110,7 +115,7 @@ const Chat = () => {
         />
       </div>
       <div>
-        <p className="text-amber-50 pb-15 text-sm flex justify-center">
+        <p className="text-amber-50 pb-5 text-sm flex justify-center">
           {strings[language].disclaimer}
         </p>
       </div>

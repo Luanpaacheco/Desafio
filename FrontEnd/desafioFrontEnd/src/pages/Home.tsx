@@ -20,16 +20,13 @@ const Home = () => {
     setErrorMessage("");
 
     try {
-      const response = await fetch(
-        "https://vercel-back-taurus.vercel.app/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: inputEmail, password: inputPassword }),
-        }
-      );
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: inputEmail, password: inputPassword }),
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
